@@ -6,4 +6,3 @@ Pillow==4.0.0
 Pillow-PIL==0.1.dev0
 requests==2.13.0
 Wand==0.4.4
-Paginator==0.4.1

@@ -2,8 +2,8 @@ import datetime
 from com.data.models import *
 from bson.objectid import ObjectId
 from com.tools.tools_general import *
-from django.core.paginator import Paginator
-import json
+#from django.core.paginator import Paginator
+#import json
 
 '''
 @summary: Method that allows you to find the type of interaction for codename
