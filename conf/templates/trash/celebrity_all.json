@@ -1,0 +1,41 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"content" : [{% for celebrity in data.content %}
+				{
+						"id_celebrity" : "{{celebrity.id}}", 
+						"name" : {{celebrity.name|tojson}},
+						"description" : {{celebrity.description|tojson}},
+						"owner" : "{{celebrity.owner}}",
+						"email" : "{{celebrity.email}}",
+						"telephone" : "{{celebrity.telephone}}",
+						"web_site" : "{{celebrity.web_site}}",
+						"facebook" : "{{celebrity.facebook}}",
+						"twitter" : "{{celebrity.twitter}}",
+						"google_plus" : "{{celebrity.google_plus}}",
+						"address" : {{celebrity.address|tojson}},	
+						"love_counter" : {{celebrity.love_counter}},
+						"resource_refs": {},
+						"created_date" : "{{celebrity.created_date}}",
+						"status" : "{{celebrity.status}}",
+						"parameters": {
+								 		"cover" : "{{celebrity.cover}}",
+										"avatar" : "{{celebrity.avatar}}",
+										"promotional_photo" : "{{celebrity.promotional_photo}}",
+										"promotional_video" : "{{celebrity.promotional_video}}"
+								  	  },
+						"administrators" : [{% for administrator in celebrity.administrators_refs %}
+											{
+													"id" : "{{administrator}}"
+											
+											}{% if loop.last == False %},{% endif %}
+								  			{% endfor %}
+								  			]
+				
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}

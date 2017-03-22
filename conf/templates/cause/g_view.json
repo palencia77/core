@@ -1,0 +1,39 @@
+{
+        "bee_type": "{{data.bee_type}}",
+		"id_cause" : "{{data.bee.id}}",
+		"name" : {{data.bee.name|tojson}},
+		"description" : {{data.bee.description|tojson}},
+		"goal" : {{data.bee.goal|tojson}},
+		"id_sub_scope" : "{{data.bee.sub_scope.id}}",
+		"sub_scope" : {{data.bee.sub_scope.name}|tojson},
+		"owner" : "{{data.bee.owner.full_name}}",
+		"love_counter" : {{data.bee.love_counter}},
+		"fly_counter" : {{data.bee.fly_counter}},
+		"created_date" : "{{data.bee.created_date}}",
+		"start_date" : "{{ data.bee.start_date}}",
+		"closing_date" : "{{ data.bee.closing_date}}",
+		"finish_date" : "{{ data.bee.finish_date}}",
+		"love_meter" : {{ data.bee.love_meter}},
+		"love_goal" : {{ data.bee.love_goal}},
+		"beneficiary" : {{data.bee.beneficiary|tojson}},
+		"risk_classification" : {{data.bee.risk_classification|tojson}},
+		"contacts" : [{% for contact in data.bee.contacts %}
+				 {
+						"contact_name" : {{contact.name|tojson}},
+						"email" : "{{contact.email}}",
+						"mobile_phone" : "{{contact.mobile_phone}}",					
+						"telephone" : "{{contact.telephone}}",
+						"organization" : {{contact.organization|tojson}},
+						"address" : {{contact.address|tojson}}
+						
+				 }{% if loop.last == False %},{% endif %}
+	  			 {% endfor %}
+	  			 ],
+	  	"parameters": {
+						"cover" : "{{data.bee.parameters.cover}}",
+						"avatar" : "{{data.bee.parameters.avatar}}",
+						"promotional_photo" : "{{data.bee.parameters.promotional_photo}}",
+						"promotional_video" : "{{data.bee.parameters.promotional_video}}",
+						"document" : "{{data.bee.parameters.document}}"
+					  }		 	
+}

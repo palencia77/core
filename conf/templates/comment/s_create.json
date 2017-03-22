@@ -1,0 +1,18 @@
+{
+		"message" : "{{data.message}}",
+		"id_comment" : "{{data.comment.id}}",
+        "text": "{{data.comment.text}}",
+        "created_date": "{{data.comment.created_date}}",
+        "status": "{{data.comment.status}}",
+        "love_counter" : {% if data.comment.love_counter == None %}0{% else %}{{data.comment.love_counter}}{% endif %},
+        "love_refs" : [{% for ref in data.comment.love_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}],
+        "owner": {
+              "id": "{{data.comment.owner.id}}",
+              "name": {{data.comment.owner.name|tojson}},
+              "short_url": "{{data.comment.owner.short_url}}",
+              "id_avatar": {% if 'avatar' in data.comment.owner.parameters %}"{{data.comment.owner.parameters.avatar}}"{% else %}""{% endif %}
+         },
+         "id_parent":  "{{data.comment.parent.id}}"
+           
+		
+}

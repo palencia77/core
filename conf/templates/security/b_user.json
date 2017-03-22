@@ -1,0 +1,11 @@
+{
+	"id_user"	: "{{data.id}}",
+	"email" : "{{data.email}}",
+	"full_name" : {{data.full_name|tojson}},
+	"phone" : "{{data.phone}}",
+	"birthday" : "{{data.birthday}}",
+	"gender" : "{{data.gender}}",
+	"id_avatar" : "{{data.parameters.avatar}}",
+	"avatar_src" : "{{data.avatar_src}}"
+		
+}

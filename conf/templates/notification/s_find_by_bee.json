@@ -1,0 +1,30 @@
+{
+    "content": [{% for notification in data.content %}
+        	   { 
+        	   		"id_notification" : "{{notification.id}}",
+            		"created_date": "{{notification.created_date}}",
+            		"status": "{{notification.status}}",
+            		"notification_type" : "{{notification.notification_type.name}}",
+                    "description" : "{{notification.description}}",
+            		"owner": {
+                		"id": "{{notification.owner.id}}",
+                		"name": "{{notification.owner.name}}",
+                        "short_url": "{{notification.owner.short_url}}",
+                        "id_avatar": {% if 'avatar' in notification.owner.parameters %}"{{notification.owner.parameters.avatar}}"{% else %}""{% endif %}
+            		},
+                    "post_destination" : {% if 'post_destination' in notification %} "{{notification.post_destination.id}}"{% else %}""{% endif %},
+                    "comment_destination" : {
+                                                "id_comment": {% if 'comment_destination' in notification %} "{{notification.comment_destination.id}}"{% else %}""{% endif %},
+                                                "id_parent": {% if 'comment_destination' in notification %} "{{notification.comment_destination.parent.id}}"{% else %}""{% endif %}
+                                            }
+        		}{% if loop.last == False %},{% endif %}
+        		{% endfor %}
+    			],
+    "last_page": "{{data.last_page}}",
+    "number_elements": {{data.number_elements}},
+    "total_elements": {{data.total_elements}},
+    "page_number": {{data.page_number}},
+    "first_page": "{{data.first_page}}",
+    "total_pages": {{data.total_pages}},
+    "page_size": {{data.page_size}}
+}

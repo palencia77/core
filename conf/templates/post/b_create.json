@@ -1,0 +1,19 @@
+{
+		"message" : "{{data.message}}",
+		"id_post" : "{{data.post.id}}",
+		"title" : {{data.post.title|tojson}},
+		"text" : {{data.post.text|tojson}},
+		"created_date" : "{{data.post.created_date}}",
+		"owner" : { 
+					"id" : "{{data.post.owner.id}}", 
+					"name" : {{data.post.owner.name|tojson}},
+					"short_url": "{{data.post.owner.short_url}}",
+					"id_avatar": {% if 'avatar' in data.post.owner.parameters %}"{{data.post.owner.parameters.avatar}}"{% else %}""{% endif %} 
+				},
+		"love_counter" : {% if data.post.love_counter == None %}0{% else %}{{data.post.love_counter}}{% endif %},
+		"love_refs" : [{% for ref in data.post.love_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}],
+		"fly_counter" : {% if data.post.fly_counter == None %}0{% else %}{{data.post.fly_counter}}{% endif %},
+		"fly_refs" : [{% for ref in data.post.fly_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}],
+		"resource_refs" : [{% for ref in data.post.resource_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}],
+		"status": "{{data.post.status}}"
+}

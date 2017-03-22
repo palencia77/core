@@ -1,0 +1,20 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"content" : [{% for cause in data.content %}
+				{
+						"id_cause" : "{{cause.id_cause}}",
+						"name" : {{cause.name|tojson}},
+						"description" : {{cause.description|tojson}},
+						"color" : "{{cause.sub_scope.parent.color}}",
+					   "parameters" :
+				  				 {
+									"id_promotional_photo" : "{{cause.parameters.promotional_photo}}"
+							  	 }	
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}

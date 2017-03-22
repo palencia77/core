@@ -1,0 +1,9 @@
+{
+	"access_token" : "{{data.access_token}}",
+	"login" : "{{data.login}}",
+	"email" : "{{data.email}}",
+	"full_name" : {{data.full_name|tojson}},
+	"id_user" : "{{data.id_user}}",
+	"id_bee" : "{{data.id_bee}}",
+	"message":  "{{data.message}}"
+}

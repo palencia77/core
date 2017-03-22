@@ -1,0 +1,7 @@
+{
+		"id_award" : "{{data.id}}",
+		"title" : {{data.title|tojson}},
+		"text" : "{{data.text}}",
+		"quantity" : "{{data.text}}",
+		"resource_refs" : [{% for ref in data.resource_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}]
+}

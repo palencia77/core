@@ -1,0 +1,28 @@
+
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"content" : [{% for scope in data.content %}
+				{
+					"id_scope" : "{{scope.id}}",
+					"name" : {{scope.name|tojson}},
+					"description" : {{scope.description|tojson}},
+					"creation_date" : "{{scope.creation_date}}",
+					"activation_date" : "{{scope.activation_date}}",
+					"closing_date" : "{{scope.closing_date}}",
+					"status" :  "{{scope.status}}",
+					"color" : "{{scope.color}}",
+					"logo" : {
+									"id_logo" : "{{scope.logo.id_logo}}",
+									"name" : {{scope.logo.name|tojson}},
+									"text" : "{{scope.logo.text}}",
+									"binary_content" : "{{scope.logo.binary_content}}",
+									"content_type" : "{{scope.logo.content_type}}"
+							}
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}

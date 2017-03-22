@@ -1,0 +1,6 @@
+{
+	"message" : "{{data.message}}",
+	"target_love_meter" : {% if data.target_love_meter == None %}""{% else %}{{data.target_love_meter}}{% endif %},
+	"bee_love_coin" : {{data.bee_love_coin}},
+	"bee_love_score" : {{data.bee_love_score}}
+}

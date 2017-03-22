@@ -1,0 +1,24 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"content" : [{% for cause in data.content %}
+				{
+					"id_bee" : "{{cause.id}}",
+					"name" : {{cause.name|tojson}},
+					"goal" : {{cause.goal|tojson}},
+					"love_counter" : {{cause.love_counter}},
+					"created_date" : "{{cause.created_date}}",
+					"scope" :	{	"id_scope" :  "{{cause.scope.id}}", 
+									"name" : {{cause.scope.name|tojson}},
+									"description" : {{cause.scope.description|tojson}}
+								},
+					"finish_date" : "{{cause.finish_date}}",
+					"love_meter" : {{cause.love_meter}},
+					"love_goal" : {{cause.love_goal}}
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}

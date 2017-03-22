@@ -1,0 +1,24 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"content" : [{% for user in data.content %}
+				{
+						"id_user"	: "{{user.id}}",
+						"login" : "{{user.login}}",
+						"email" : "{{user.email}}",
+						"id_bee" : "{{user.parameters['id_bee']}}",
+						"full_name" : {{user.full_name|tojson}},
+						"phone" : "{{user.phone}}",
+						"birthday" : "{{user.birthday}}",
+						"gender" : "{{user.gender}}",
+						"id_avatar":"{{user.parameters.avatar}}",
+						"avatar_src" : "{{user.avatar_src}}",
+						"created_date" : "{{user.created_date}}"				
+					
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}

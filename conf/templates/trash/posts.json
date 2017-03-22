@@ -1,0 +1,14 @@
+{
+	"number" : {{data.number}},
+	"size" : {{data.size}},
+	"totalElements" : {{data.totalElements}},
+	"totalPages" : {{data.totalPages}},
+	"numberOfElements" : {{data.numberOfElements}},
+	"content" : [{% for e in data.content %}
+				{
+					"id" : "{{e.id}}",
+					"text" : "{{e.text}}"
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}

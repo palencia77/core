@@ -1,0 +1,11 @@
+{
+	"id" : "{{data.id}}", 
+	"name" : {{data.name|tojson}},
+	"description" : {{data.description|tojson}},
+	"logo" : "{{data.logo}}",
+	"creation_date" : "{{data.creation_date}}",
+	"activation_date": "{{data.activation_date}}",
+	"closing_date" : "{{data.closing_date}}",
+	{% if data._cls == "Scope.SubScope" %}"parent" :{{data.parent.name|tojson}},{% endif %}
+	"status" : "{{data.status}}"
+}

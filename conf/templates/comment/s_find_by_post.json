@@ -1,0 +1,27 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"first_page": "{{data.first_page}}",		
+	"last_page": {{data.last_page|tojson}},
+    "content": [{% for comment in data.content %}
+        	   { 
+        	   		"id_comment" : "{{comment.id}}",
+            		"text": {{comment.text|tojson}},
+            		"created_date": "{{comment.created_date}}",
+            		"status": "{{comment.status}}",
+            		"love_counter" : {% if comment.love_counter == None %}0{% else %}{{comment.love_counter}}{% endif %},
+                    "love_refs" : [{% for ref in comment.love_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}],
+            		"id_parent":  "{{comment.parent.id}}",     
+            		"owner": {
+                		"id": "{{comment.owner.id}}",
+                		"name": {{comment.owner.name |tojson}},
+                		"short_url": "{{comment.owner.short_url}}",
+                		"id_avatar": {% if 'avatar' in comment.owner.parameters %}"{{comment.owner.parameters.avatar}}"{% else %}""{% endif %}
+            		}
+        		}{% if loop.last == False %},{% endif %}
+        		{% endfor %}
+    			]
+}

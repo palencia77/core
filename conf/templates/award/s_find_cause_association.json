@@ -1,0 +1,22 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"content" : [{% for award in data.content %}
+				{
+						"id_award" : "{{award.id_award}}",
+						"title" : {{award.title|tojson}},
+						"text" : {{award.text|tojson}},
+						"owner" : {
+                                "id" : "{{award.owner.id}}",
+                                "name" : {{award.owner.name|tojson}},
+                                "id_avatar": {% if 'avatar' in award.owner.parameters %}"{{award.owner.parameters.avatar}}"{% else %}""{% endif %}
+                              },
+						"amount_love" : {{award.amount_love}},
+						"resource_refs" : [{% for ref in award.resource_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}]					
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}

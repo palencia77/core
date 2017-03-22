@@ -1,0 +1,21 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"content" : [{% for cause in data.content %}
+				{
+						"id_cause" : "{{cause.id}}",
+						"name" : {{cause.name|tojson}},
+						"description" : {{cause.description[0:120]|tojson}},
+						"short_url" : "{{cause.short_url}}",
+						"geographic_location" : {{cause.geographic_location|tojson}},
+						"parameters" :
+				  				 {
+									"id_avatar" : "{{cause.parameters.avatar}}"
+							  	 } 						  			
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}

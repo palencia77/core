@@ -1,0 +1,22 @@
+{
+    "bee_type" : "{{data.bee_type}}",
+	"id" : "{{data.bee.id}}",
+	"name" : {{data.bee.name|tojson}},
+	"description": {{data.bee.description|tojson}},
+	"owner" : { "login" : "{{data.bee.owner.login}}", "full_name" : "{{data.bee.owner.full_name}}" },
+	"love_counter" : {% if data.bee.love_counter == None %}0{% else %}{{data.bee.love_counter}}{% endif %},
+	"post_counter" : {% if data.bee.post_counter == None %}0{% else %}{{data.bee.post_counter}}{% endif %},
+	"resource_refs": {},
+	"created_date" : "{{data.bee.created_date}}",
+	"status" : "{{data.bee.status}}",
+	"parameters": {
+						"id_cover" : "{{data.bee.parameters.cover}}",
+						"id_avatar" : "{{data.bee.parameters.avatar}}",
+						"id_promotional_photo" : "{{data.bee.parameters.promotional_photo}}"
+				   },
+	"web_site":  {% if data.bee.web_site == "None" %}""{% else %}"{{data.bee.web_site}}"{% endif %},
+	"facebook":  {% if data.bee.facebook == "None" %}""{% else %}"{{data.bee.facebook}}"{% endif %},
+	"twitter":  {% if data.bee.twitter == "None" %}""{% else %}"{{data.bee.twitter}}"{% endif %},
+	"google_plus":  {% if data.bee.google_plus == "None" %}""{% else %}"{{data.bee.google_plus}}"{% endif %},
+	"short_url":   "{{data.bee.short_url}}"	
+}

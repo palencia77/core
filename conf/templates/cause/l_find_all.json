@@ -1,0 +1,52 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"content" : [{% for cause in data.content %}
+				{
+						"id_cause" : "{{cause.id}}",
+						"name" : {{cause.name|tojson}},
+						"description" : {{cause.description[0:120]|tojson}},
+						"goal" : {{cause.goal|tojson}},					
+						"id_subscope" : "{{cause.id_subscope}}",
+						"sub_scope" : "{{cause.sub_scope}}",
+						"love_counter" : {{cause.love_counter}},
+						"fly_counter" : {{cause.fly_counter}},
+						"start_date" : "{{cause.start_date}}",
+						"closing_date" : "{{cause.closing_date}}",
+						"love_meter" : {{cause.love_meter}},
+						"love_goal" : {{ cause.love_goal}},
+						"beneficiary" : {{cause.beneficiary|tojson}},
+						"risk_classification" : {{cause.risk_classification|tojson}},
+                        "short_url" : "{{cause.short_url}}",
+						"color" : "{{cause.sub_scope.parent.color}}",
+					  	"parameters" :
+				  				 {
+									"id_avatar" : "{{cause.parameters.id_avatar}}",
+									"id_promotional_photo" : "{{cause.parameters.promotional_photo}}"
+							  	 },
+						"celebrities" : [{% for celebrity in cause.celebrities %}
+										{	
+											"id" : "{{celebrity.id}}",
+											"name" : {{celebrity.name|tojson}},
+											"description" : {{celebrity.description|tojson}},
+											"id_avatar" : {% if 'avatar' in celebrity.parameters %}"{{celebrity.parameters.avatar}}"{% else %}""{% endif %}
+										}{% if loop.last == False %},{% endif %}
+							  			{% endfor %}
+							  			],
+						"partners" : [{% for partner in cause.partners %}
+										{
+											"id" : "{{partner.id}}",
+											"name" : {{partner.name|tojson}},
+											"description" : {{partner.description|tojson}},
+											"id_avatar" : {% if 'avatar' in partner.parameters %}"{{partner.parameters.avatar}}"{% else %}""{% endif %}
+										}{% if loop.last == False %},{% endif %}
+							  			{% endfor %}
+							  			],
+						"love_refs" : [{% for ref in cause.love_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}]
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}

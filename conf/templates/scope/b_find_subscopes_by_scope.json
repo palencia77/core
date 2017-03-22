@@ -1,0 +1,26 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"content" : [{% for subscope in data.content %}
+				{
+					"id_subscope" : "{{subscope.id}}",
+					"name" : {{subscope.name|tojson}},
+					"description" : {{subscope.description|tojson}},
+					"creation_date" : "{{subscope.creation_date}}",
+					"activation_date" : "{{subscope.activation_date}}",
+					"closing_date" : "{{subscope.closing_date}}",
+					"status" :  "{{subscope.status}}",
+					"parent": "{{subscope.parent}}",
+					"logo" : {
+									"id_logo" : "{{subscope.logo.id_logo}}",
+									"name" : {{subscope.logo.name|tojson}},
+									"text" : {{subscope.logo.text|tojson}},
+									"binary_content" : "{{subscope.logo.binary_content}}",
+									"content_type" : "{{subscope.logo.content_type}}"
+								}
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}]
+}

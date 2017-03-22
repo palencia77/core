@@ -1,0 +1,4 @@
+{
+	"message" : "{{data.message}}",
+	"id_scope" : "{{data.id_scope}}"
+}

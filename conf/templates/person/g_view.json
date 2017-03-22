@@ -1,0 +1,22 @@
+{
+    "bee_type" : "{{data.bee_type}}",
+	"id" : "{{data.bee.id}}",
+	"name" : {{data.bee.name|tojson}},
+	"email" : "{{data.bee.owner.email}}",
+	"full_name" : {{data.bee.owner.full_name|tojson}},
+	"gender" : {{data.bee.owner.gender|tojson}},
+	"parameters" :
+			  {
+				 "id_avatar" : "{{data.bee.parameters.avatar}}",
+				 "id_cover" : "{{data.bee.parameters.cover}}"
+			  },
+	"owner" : { "login" : "{{data.bee.owner.login}}", "full_name" : {{data.bee.owner.full_name|tojson}} },
+	"love_score" : {% if data.bee.love_score == None %}0{% else %}{{data.bee.love_score}}{% endif %},
+	"love_coin" : {% if data.bee.love_coin == None %}0{% else %}{{data.bee.love_coin}}{% endif %},
+	"love_counter" : {% if data.bee.love_counter == None %}0{% else %}{{data.bee.love_counter}}{% endif %},
+	"post_counter" : {% if data.bee.post_counter == None %}0{% else %}{{data.bee.post_counter}}{% endif %},
+	"resource_refs": {},
+	"created_date" : "{{data.bee.created_date}}",
+	"current_status" : {{data.bee.current_status|tojson}},
+	"status" : "{{data.bee.status}}"
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Informaci&oacute; de Canje de premio</title>
+</head>
+<body >
+	<table style='background:#00555E' cellpadding="0" cellspacing="0" border="0" id="backgroundTable" background="#00555E">
+		<tr>
+			<td>
+				<table cellpadding="0" cellspacing="0" border="0" align="center">
+					<tr>
+                        <td valign="middle" style="color: #FFF; font-size: 14px; text-align:center; padding: 20px 30px; font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box;">
+                         <h1 style="text-align: center;"><a href="http://www.domain.com" target ="_blank" title="Styling Links" style="text-align: center; text-decoration: none;">
+                                <img class="image_fix" src="http://www.domain.com/public/img/white_logo.png" alt="domain.com" title="domain.com" width="100" height="100" /></a>
+                         </h1>
+                         <h1 style="color: #02C3B9" >&iexcl;Haz comprado el siguiente premio en nuestra plataforma</h1>
+                         {% if data.id_resource != None %}
+                         <img src="http://www.domain.com:5000/resource/public/view?id_resource={{data.id_resource}}" title="{{data.award.title}}" width="100" height="100" />
+                         {% endif %}
+                         <p>{{data.award.title}}</p>
+                         <p>{{data.award.text}}</p>
+                         <p>Valor (Love Coins): {{data.award.amount_love}}</p>
+						</td>
+					</tr>
+
+				</table>			
+                <table cellpadding="0" cellspacing="0" border="0" align="center">
+					<tr>
+						<td width="600" align="center" valign="top" style="background: #ff5722; padding: 0px; font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box;">
+							<a href="http://www.domain.com/causes" target ="_blank" title="convi&eacute;rtete en H&eacute;roe" style="text-align: center; text-decoration: none;"><h2 style="text-aling: center; color: #FFF">Conoce las causas y convi&eacute;rtete en H&eacute;roe</h2></a>
+						</td>
+					</tr>
+				</table>
+				<table cellpadding="0" cellspacing="0" border="0" align="center" id="footer">
+					<tr>                       					
+						<td width="200" valign="middle" style="padding: 0px; font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; text-align: center;">
+							<p style="text-align: center;"><a class="" href="https://twitter.com/palencia77" target="_blank"><img src="http://www.domain.com/public/img/icon_twitter_mobile_32x32.png" alt="twitter" /></a>
+							<a class="" href="https://www.facebook.com/jezus.palencia" target="_blank"><img src="http://www.domain.com/public/img/icon_facebook_mobile_32x32.png" alt="facebook" /></a></p>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

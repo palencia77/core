@@ -1,0 +1,43 @@
+{
+	"id_cause" : "{{data.id}}",
+	"name" : {{data.name|tojson}},
+	"description" : {{data.description|tojson}},
+	"goal" : {{data.goal|tojson}},					
+	"id_subscope" : "{{data.id_subscope}}",
+	"sub_scope" : "{{data.sub_scope}}",
+	"love_counter" : {{data.love_counter}},
+	"fly_counter" : {{data.fly_counter}},
+	"start_date" : "{{data.start_date}}",
+	"closing_date" : "{{data.closing_date}}",
+	"love_meter" : {{data.love_meter}},
+	"love_goal" : {{ data.love_goal}},
+	"short_url" : "{{data.short_url}}",
+	"beneficiary" : {{data.beneficiary|tojson}},
+	"risk_classification" : {{data.risk_classification|tojson}},
+	"color" : "{{data.sub_scope.parent.color}}",
+	"url_promotional_video" : "{{data.url_promotional_video}}",
+  	"parameters" :
+					 {
+						"id_avatar" : "{{data.parameters.id_avatar}}",
+						"id_promotional_photo" : "{{data.parameters.promotional_photo}}"
+				  	 },
+	"celebrities" : [{% for celebrity in data.celebrities %}
+					{	
+						"id" : "{{celebrity.id}}",
+						"name" : {{celebrity.name|tojson}},
+						"description" : {{celebrity.description|tojson}},
+						"id_avatar" : {% if 'avatar' in celebrity.parameters %}"{{celebrity.parameters.avatar}}"{% else %}""{% endif %}
+					}{% if loop.last == False %},{% endif %}
+		  			{% endfor %}
+		  			],
+	"partners" : [{% for partner in data.partners %}
+					{
+						"id" : "{{partner.id}}",
+						"name" : {{partner.name|tojson}},
+						"description" : {{partner.description|tojson}},
+						"id_avatar" : {% if 'avatar' in partner.parameters %}"{{partner.parameters.avatar}}"{% else %}""{% endif %}
+					}{% if loop.last == False %},{% endif %}
+		  			{% endfor %}
+		  		 ],
+	"love_refs" : [{% for ref in data.love_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}]
+}

@@ -1,0 +1,16 @@
+{
+	"id_post" : "{{data.id}}",
+	"title" : {{data.title|tojson}},
+	"text" : {{data.text|tojson}},
+	"created_date" : "{{data.created_date}}",
+	"owner" : { "id" : "{{data.owner.id}}", 
+				"name" : {{data.owner.name|tojson}},
+				"short_url": "{{data.owner.short_url}}",
+				"id_avatar": {% if 'avatar' in data.owner.parameters %}"{{data.owner.parameters.avatar}}"{% else %}""{% endif %} 
+				},
+	"love_counter" : {% if data.love_counter == None %}0{% else %}{{data.love_counter}}{% endif %},
+	"love_refs" : [{% for ref in data.love_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}],
+	"fly_counter" : {% if data.fly_counter == None %}0{% else %}{{data.fly_counter}}{% endif %},
+	"fly_refs" : [{% for ref in data.fly_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}],
+	"resource_refs" : [{% for ref in data.resource_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}]
+}

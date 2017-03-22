@@ -1,0 +1,64 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"content" : [{% for cause in data.content %}
+				{
+						"id_cause" : "{{cause.id_cause}}",
+						"name" : {{cause.name|tojson}},
+						"description" : {{cause.description|tojson}},
+						"goal" : {{cause.goal|tojson}},					
+						"id_subscope" : "{{cause.id_subscope}}",
+						"id_scope" : "{{cause.id_scope}}",
+						"owner" : "{{cause.owner}}",
+						"love_counter" : {{cause.love_counter}},
+						"fly_counter" : {{cause.fly_counter}},
+						"created_date" : "{{cause.created_date}}",
+						"start_date" : "{{ cause.start_date}}",
+						"closing_date" : "{{cause.closing_date}}",
+						"finish_date" : "{{ cause.finish_date}}",
+						"love_meter" : {{cause.love_meter}},
+						"love_goal" : {{cause.love_goal}},
+						"beneficiary" : {{cause.beneficiary|tojson}},
+						"risk_classification" : {{cause.risk_classification|tojson}},
+						"url_promotional_video" : "{{cause.url_promotional_video}}",
+						"status" : "{{cause.status}}",
+						"avatar_src" : "{{cause.avatar_src}}",
+						"short_url" : "{{cause.short_url}}",
+						"color" : "{{cause.color}}",
+						"geographic_location" : {{cause.geographic_location|tojson}},
+						"contacts" : [{% for contact in cause.contacts %}
+								 {
+								 		"id_contact" : "{{contact.id}}",
+										"name" : {{contact.name|tojson}},
+										"email" : "{{contact.email}}",
+										"mobile_phone" : "{{contact.mobile_phone}}",					
+										"telephone" : "{{contact.telephone}}",
+										"organization" : {{contact.organization|tojson}},
+										"address" : {{contact.address|tojson}}
+								 }{% if loop.last == False %},{% endif %}
+					  			 {% endfor %}
+					  			 ],
+					  	"partners" : [{% for partner in cause.partners %}
+								 {
+								 		"id_partner" : "{{partner.id}}",
+										"name" : "{{partner.name}}",
+										"description" : "{{partner.description}}",
+										"id_avatar" : "{{partner.parameters.avatar}}"														
+										
+								 }{% if loop.last == False %},{% endif %}
+					  			 {% endfor %}
+					  			 ],
+					  	"parameters": {
+								 		"cover" : "{{cause.cover}}",
+										"avatar" : "{{cause.avatar}}",
+										"promotional_photo" : "{{cause.promotional_photo}}",
+										"promotional_video" : "{{cause.promotional_video}}",
+										"document" : "{{cause.document}}"
+								  	  } 	
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}

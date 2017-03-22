@@ -1,0 +1,4 @@
+{
+		"id_award" : "{{data.id_award}}",
+		"message" : "{{data.message}}" 
+}

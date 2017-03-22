@@ -1,0 +1,53 @@
+{"love_cause":[{% for operation in data.love_cause.content.result %}
+				{
+						"created_date" : {% if data.love_cause.time_unit == "day" or data.love_cause.time_unit == None %}
+												"{{operation._id.year}}-{{operation._id.month}}-{{operation._id.day}}"
+										 {% elif data.love_cause.time_unit == "month" %}
+										 		"{{operation._id.year}}-{{operation._id.month}}"
+										 {% else %}
+										 		"{{operation._id.year}}"
+										 {% endif %}
+						,"operation_counter" : "{{operation.amount}}"
+				}{% if loop.last == False %},{% endif %}
+{% endfor %}
+],
+"fly_cause":[{% for operation in data.fly_cause.content.result %}
+				{
+						"created_date" : {% if data.fly_cause.time_unit == "day" or data.fly_cause.time_unit == None %}
+												"{{operation._id.year}}-{{operation._id.month}}-{{operation._id.day}}"
+										 {% elif data.fly_cause.time_unit == "month" %}
+										 		"{{operation._id.year}}-{{operation._id.month}}"
+										 {% else %}
+										 		"{{operation._id.year}}"
+										 {% endif %}
+						,"operation_counter" : "{{operation.amount}}"
+				}{% if loop.last == False %},{% endif %}
+{% endfor %}
+],
+"love_posts":[{% for operation in data.love_posts.content.result %}
+				{
+						"created_date" : {% if data.love_posts.time_unit == "day" or data.love_posts.time_unit == None %}
+												"{{operation._id.year}}-{{operation._id.month}}-{{operation._id.day}}"
+										 {% elif data.love_posts.time_unit == "month" %}
+										 		"{{operation._id.year}}-{{operation._id.month}}"
+										 {% else %}
+										 		"{{operation._id.year}}"
+										 {% endif %}
+						,"operation_counter" : "{{operation.amount}}"
+				}{% if loop.last == False %},{% endif %}
+{% endfor %}
+],
+"fly_posts":[{% for operation in data.fly_posts.content.result %}
+				{
+						"created_date" : {% if data.fly_posts.time_unit == "day" or data.fly_posts.time_unit == None %}
+												"{{operation._id.year}}-{{operation._id.month}}-{{operation._id.day}}"
+										 {% elif data.fly_posts.time_unit == "month" %}
+										 		"{{operation._id.year}}-{{operation._id.month}}"
+										 {% else %}
+										 		"{{operation._id.year}}"
+										 {% endif %}
+						,"operation_counter" : "{{operation.amount}}"
+				}{% if loop.last == False %},{% endif %}
+{% endfor %}
+]
+}

@@ -1,0 +1,23 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"first_page": "{{data.first_page}}",
+	"last_page": "{{data.last_page}}",
+	"content" : [{% for resource in data.content %}
+				{
+					"id_resource" : "{{resource.id_resource}}",
+					"name" : {{resource.name|tojson}},
+					"text" : "{{resource.text}}",
+					"content_type" : "{{resource.content_type}}",
+					"binary_content" : "{{resource.binary_content}}",
+					"created_date" : "{{resource.created_date}}",
+					"owner" : { "id_bee" : "{{resource.owner.id}}", "name" : "{{resource.owner.name}}" },
+					"love_counter" : {% if resource.love_counter == None %}0{% else %}{{resource.love_counter}}{% endif %},
+					"status" : "{{resource.status}}"
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}

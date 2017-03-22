@@ -1,0 +1,12 @@
+{
+ "content" :    [{% for interaction in data.content.result %}
+                                {
+                                        "id_bee" :          "{{interaction._id.bee_person}}",
+                                        "love_score"      :      "{{interaction.love_score}}",
+                                        "name"            :  {{interaction._id.name |tojson}},
+                                        "id_avatar"       : "{{interaction._id.id_avatar}}",
+                                        "short_url"       : "{{interaction._id.short_url}}"
+                                }{% if loop.last == False %},{% endif %}
+                {% endfor %}
+                ]
+}

@@ -1,0 +1,10 @@
+{
+		"id_resource" : "{{data.id_resource}}",
+		"text" : "{{data.text}}",
+		"content_type" : "{{data.content_type}}",
+		"binary_content" : "{{data.binary_content}}",
+		"created_date" : "{{data.created_date}}",
+		"owner" : { "login" : "{{data.owner.owner.login}}", "full_name" : {{data.owner.owner.full_name|tojson}} },
+		"love_counter" : {% if data.love_counter == None %}0{% else %}{{data.love_counter}}{% endif %},
+		"status" : "{{data.status}}"
+}

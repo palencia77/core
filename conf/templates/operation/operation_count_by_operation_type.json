@@ -1,0 +1,13 @@
+[{% for operation in data.content.result %}
+				{
+						"created_date" : {% if data.time_unit == "day" or data.time_unit == None %}
+												"{{operation._id.year}}-{{operation._id.month}}-{{operation._id.day}}"
+										 {% elif data.time_unit == "month" %}
+										 		"{{operation._id.year}}-{{operation._id.month}}"
+										 {% else %}
+										 		"{{operation._id.year}}"
+										 {% endif %}
+						,"operation_counter" : "{{operation.amount}}"
+				}{% if loop.last == False %},{% endif %}
+{% endfor %}
+]

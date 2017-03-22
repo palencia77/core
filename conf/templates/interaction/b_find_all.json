@@ -1,0 +1,18 @@
+[{% for interaction_type in data %}{
+	
+	
+		"id_interaction_type" : "{{interaction_type.id}}",
+		"name" : {{interaction_type.name|tojson}},
+		"interactions": [{% for interaction in interaction_type.interactions %}
+							{
+							"id_interaction": "{{interaction.id}}",
+							"name" : {{interaction.name |tojson}},
+							"value" : {{interaction.value}}
+							}{% if loop.last == False %},{% endif %}
+						{% endfor %}]		
+		
+	
+	 
+} 
+{% if loop.last == False %},{% endif %}
+{% endfor %}]

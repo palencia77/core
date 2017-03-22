@@ -1,0 +1,22 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"content" : [{% for person in data.content %}
+				{
+					"id_person" : "{{person.id_person}}",
+					"name" : {{person.name|tojson}},
+					"gender" : "{{ person.gender}}", 
+					"love_score" : {{person.love_score}},
+					"post_counter" : {% if person.post_counter == None %}0{% else %}{{person.post_counter}}{% endif %},
+					"created_date" : "{{person.created_date}}",
+					"birthday" : "{{person.birthday}}", 
+					"friends_counter" : {{person.friends_counter}},
+					"geographic_location" : "{{person.geographic_location}}",
+            		"resource_refs": []
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}

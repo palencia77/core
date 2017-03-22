@@ -1,0 +1,4 @@
+{
+	"message" : "{{data.message}}",
+	"id_celebrity" : "{{data.id_celebrity}}"
+}

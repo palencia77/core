@@ -1,0 +1,8 @@
+{
+	"id_user"	: "{{data.id}}",
+	"login" : "{{data.login}}",
+	"email" : "{{data.email}}",
+	"id_bee" : "{{data.parameters['id_bee']}}",
+	"full_name" : {{data.full_name|tojson}},
+	"avatar_src" : "{{data.avatar_src}}"
+}

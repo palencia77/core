@@ -1,0 +1,29 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"last_page": {{data.last_page|tojson}},	
+	"content" : [{% for post in data.content %}
+				{
+					"id_post" : "{{post.id}}",
+					"title" : {{post.title|tojson}},
+					"text" : {{post.text|tojson}},
+					"created_date" : "{{post.created_date}}",
+					"owner" : { "id" : "{{post.owner.id}}", 
+								"name" : {{post.owner.name|tojson}},
+								"short_url": "{{post.owner.short_url}}",
+								"id_avatar": {% if 'avatar' in post.owner.parameters %}"{{post.owner.parameters.avatar}}"{% else %}""{% endif %} 
+								},
+                    "status" : "{{post.status}}",
+					"love_counter" : {% if post.love_counter == None %}0{% else %}{{post.love_counter}}{% endif %},
+					"love_refs" : [{% for ref in post.love_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}],
+                    "postcomment_refs" : [{% for ref in post.postcomment_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}],
+					"fly_counter" : {% if post.fly_counter == None %}0{% else %}{{post.fly_counter}}{% endif %},
+					"fly_refs" : [{% for ref in post.fly_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}],
+					"resource_refs" : [{% for ref in post.resource_refs %}"{{ref}}"{% if loop.last == False %},{% endif %}{% endfor %}]
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}

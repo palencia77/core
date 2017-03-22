@@ -1,0 +1,65 @@
+{
+	"page_number" : {{data.page_number}},
+	"page_size" : {{data.page_size}},
+	"total_elements" : {{data.total_elements}},
+	"total_pages" : {{data.total_pages}},
+	"number_elements" : {{data.number_elements}},
+	"content" : [{% for cause in data.content %}
+				{
+						"id_cause" : "{{cause.id_cause}}",
+						"name" : {{cause.name|tojson}},
+						"description" : {{cause.description|tojson}},
+						"goal" : {{ cause.goal|tojson}},										
+						"love_counter" : {{cause.love_counter}},
+						"fly_counter" : {{cause.fly_counter}},						
+						"start_date" : "{{ cause.start_date}}",
+						"closing_date" : "{{cause.closing_date}}",
+						"finish_date" : "{{ cause.finish_date}}",
+						"love_meter" : {{ cause.love_meter}},
+						"love_goal" : {{ cause.love_goal}},
+						"beneficiary" : {{cause.beneficiary|tojson}},
+						"risk_classification" : {{cause.risk_classification|tojson}},
+						"url_promotional_video" : "{{cause.url_promotional_video}}",
+						"color" : "{{cause.color}}",
+						"short_url" : "{{cause.short_url}}",
+					  	"partners" : [{% for partner in cause.partners %}
+								 {
+								 		"id_partner" : "{{partner.id}}",
+										"name" : {{partner.name|tojson}},
+										"description" : {{partner.description|tojson}},
+										"web_site": {{partner.web_site|tojson}},
+										"facebook": {{partner.facebook|tojson}},
+										"twitter": {{partner.twitter|tojson}},
+										"google_plus": {{partner.google_plus|tojson}},
+										"id_avatar" : "{{partner.parameters.avatar}}",
+										"id_promotional_photo" : "{{partner.parameters.promotional_photo}}",
+										"id_cover" : "{{partner.parameters.cover}}"													
+										
+								 }{% if loop.last == False %},{% endif %}
+					  			 {% endfor %}
+					  			 ],
+					  	"celebrities" : [{% for celebrity in cause.celebrities %}
+								 {
+								 		"id_celebrity" : "{{celebrity.id}}",
+										"name" : {{celebrity.name|tojson}},
+										"description" : {{celebrity.description|tojson}},
+										"web_site": {{celebrity.web_site|tojson}},
+										"facebook": {{celebrity.facebook|tojson}},
+										"twitter": {{celebrity.twitter|tojson}},
+										"google_plus": {{celebrity.google_plus|tojson}},
+										"id_avatar" : "{{celebrity.parameters.avatar}}",
+										"id_promotional_photo" : "{{celebrity.parameters.promotional_photo}}",	
+										"id_cover" : "{{celebrity.parameters.cover}}"												
+										
+								 }{% if loop.last == False %},{% endif %}
+					  			 {% endfor %}
+					  			 ],
+					  	"parameters": {
+								 		"cover" : "{{cause.cover}}",
+										"avatar" : "{{cause.avatar}}",
+										"promotional_photo" : "{{cause.promotional_photo}}"
+								  	  } 	
+				}{% if loop.last == False %},{% endif %}
+	  			{% endfor %}
+	  			]
+}
