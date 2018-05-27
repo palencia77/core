@@ -6,8 +6,8 @@ from flask_mongoengine import MongoEngine, Pagination
 
 PATH_ROOT = os.path.dirname(os.path.dirname(__file__))
 print "**************PATH_ROOT: " + PATH_ROOT
-if PATH_ROOT is not None:
-    PATH_ROOT += "/"
+#if PATH_ROOT is not None:
+#    PATH_ROOT += "/"
 
 db_config = {}
 execfile(PATH_ROOT+"conf/properties/mongodb.cfg", db_config)
