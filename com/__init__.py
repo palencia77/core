@@ -10,7 +10,7 @@ print "**************PATH_ROOT: " + PATH_ROOT
 #    PATH_ROOT += "/"
 
 db_config = {}
-execfile(PATH_ROOT+"conf/properties/mongodb.cfg", db_config)
+execfile(PATH_ROOT+"/conf/properties/mongodb.cfg", db_config)
 services_app.config['MONGODB_SETTINGS'] = {
                                             'DB': db_config["DB"],
                                             'HOST': db_config["HOST"],
