@@ -42,3 +42,8 @@ def restful_tools_send_mail():
         data = {}
         data['error'] = e
         return make_template_response(data, 'error.json')
+
+@services_app.route('/ping', methods=['GET'])
+def restful_tools_ping():
+    data = {'message': 'pong'}
+    return make_ok_response(data)
