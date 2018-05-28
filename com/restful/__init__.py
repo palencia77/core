@@ -1,6 +1,25 @@
 #-- FLASK APP:
-from flask import Flask
+from flask import Flask, redirect, url_for
+
 services_app = Flask(__name__)
+
+'''
+Root core services url
+@redirect to /ping
+'''
+@services_app.route('/')
+def root():
+    return redirect(url_for('ping'))
+
+
+'''
+Ping service for checking core service status
+'''
+@services_app.route('/ping', methods=['GET'])
+def ping():
+    data = {'message': 'pong'}
+    return make_ok_response(data)
+
 
 #-- RESTful SERVICES:
 from com.restful.restful_security import *

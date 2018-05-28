@@ -10,7 +10,6 @@ from com.services.services_security import *
 from com.tools.tools_response import *
 from com.tools.tools_general import send_email
 
-    
 '''
 @summary: Service to send a email from com
 @param access_token:
@@ -27,7 +26,7 @@ def restful_tools_send_mail():
         data = json.loads(request.data)
         access_token = data['access_token']
         validate_token(access_token)
-        #Validating the params:
+        # Validating the params:
         if data['address'] is not None and data['subject'] is not None and data['text'] is not None:
             result = send_email(data['address'], data['subject'], data['text'])
             if result is True:
@@ -42,8 +41,3 @@ def restful_tools_send_mail():
         data = {}
         data['error'] = e
         return make_template_response(data, 'error.json')
-
-@services_app.route('/ping', methods=['GET'])
-def restful_tools_ping():
-    data = {'message': 'pong'}
-    return make_ok_response(data)
