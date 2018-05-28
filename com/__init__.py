@@ -5,7 +5,7 @@ from com.restful.__init__ import services_app
 from flask_mongoengine import MongoEngine, Pagination
 
 PATH_ROOT = os.path.dirname(os.path.dirname(__file__))
-if PATH_ROOT is not None:
+if PATH_ROOT is not None and PATH_ROOT != "":
     PATH_ROOT += "/"
 print "************** PATH_ROOT: " + PATH_ROOT
 
