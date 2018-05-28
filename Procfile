@@ -1,1 +1,1 @@
-web: python com/__init__.py
+web: python com/__init__.py runserver 0.0.0.0:5000
