@@ -1,1 +1,1 @@
-web: python com/__init__.py runserver 0.0.0.0:5000
+web: gunicorn --chdir com __init__:app
