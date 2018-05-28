@@ -9,7 +9,7 @@ import time
 import datetime
 import random
 import smtplib
-from com.__init__ import PATH_ROOT
+from com.__init__ import app_path
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import requests
@@ -51,7 +51,7 @@ def create_access_token():
 def send_email(address, subject, text_html):
     try:
         email_config = {}
-        execfile(PATH_ROOT+"/conf/properties/email.cfg",email_config)
+        execfile(app_path + "/conf/properties/email.cfg", email_config)
         smtpserver = smtplib.SMTP(email_config["smtp_server"],email_config["smtp_port"])
         smtpserver.ehlo()
         smtpserver.starttls()
