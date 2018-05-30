@@ -1,6 +1,7 @@
 __author__ = 'palencia77'
 
-CORE_PATH = "http://localhost:5000"
+# CORE_PATH = "http://localhost:5000"
+CORE_PATH = "https://social-core.herokuapp.com/"
 LANDING_PATH = "http://localhost:8002"
 SOCIAL_PATH = "http://localhost:8001"
 BACKEND_PATH = "http://localhost:8000"

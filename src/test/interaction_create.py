@@ -8,9 +8,9 @@ import requests
 from com.data.models import *
 
 #Test configuration------------------------------------------------------------
-global_login = 'palencia_77@hotmail.com' #Required
-global_password = '12345678' #Required
-global_app = "SOCIAL"
+global_login = 'admin' #Required
+global_password = '19104894' #Required
+global_app = "BACKEND"
 #------------------------------------------------------------------------------
 
 #===============================================================================
