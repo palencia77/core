@@ -168,12 +168,12 @@ def resful_sub_scopes_by_scope_find():
         if data['id_scope'] is None:
             raise Exception('You must provide an identifier Scope')
         scope = get_scope_by_id(data['id_scope'])
-        result = {}
-        result = get_sub_scopes_by_scope(scope,data['name_filter'],data['status'],data['page_number'], data['page_size'])     
+        #result = {}
+        result = get_sub_scopes_by_scope(scope,data['name_filter'],data['status'],data['page_number'], data['page_size'])
         subscope_content = []
         for subscope in result['content']:
-            logo = ""
-            result['content']
+            logo = None
+            #result['content']
             if subscope.logo is not None:
                 logo = {'id_logo' : subscope.logo.id,
                         'name' : subscope.logo.name,
@@ -181,16 +181,24 @@ def resful_sub_scopes_by_scope_find():
                         'binary_content' : str(resize_image(subscope.logo.binary_content,30,35)),
                         'content_type' : subscope.logo.content_type
                         }
-            content = {  'id': subscope.id, 
-                         'name': subscope.name,
-                         'description': subscope.description,
-                         'parent': subscope.parent.id,
-                         'creation_date': subscope.creation_date,
-                         'activation_date': subscope.activation_date,
-                         'closing_date': subscope.closing_date,
-                         'status': subscope.status,
-                         'logo' : logo
-                         }
+            else:
+                logo = {'id_logo': None,
+                        'name': None,
+                        'text': None,
+                        'binary_content': None,
+                        'content_type': None
+                        }
+
+            content = {'id': subscope.id,
+                       'name': subscope.name,
+                       'description': subscope.description,
+                       'parent': subscope.parent.id,
+                       'creation_date': subscope.creation_date,
+                       'activation_date': subscope.activation_date,
+                       'closing_date': subscope.closing_date,
+                       'status': subscope.status,
+                       'logo': logo
+                       }
             subscope_content.append(content)
             #We added sub_scopes to the current scope
         result['content'] = subscope_content  
@@ -356,6 +364,39 @@ def restful_scope_update_status():
             data = {} 
             data['message'] = 'ok'
             return make_ok_response(data)               
+    except Exception as e:
+        data = {}
+        data['error'] = e
+        return make_error_response(data)
+
+
+'''
+@summary: Service that update status of a SubScope
+@param access_token:
+@param id_subscope
+@param status
+@return: message: ok or error
+@status:
+'''
+@services_app.route('/subscope/update/status', methods=['POST'])
+def restful_subscope_update_status():
+    data = {}
+    try:
+        data = json.loads(request.data)
+        validate_token(data['access_token'])  # validating token
+        # Scope data:
+        if data['id_subscope'] is not None:
+            subscope = get_subscope_by_id(data['id_subscope'])
+        else:
+            raise Exception('You must provide id of the SubScope to be removed')
+
+        if data['status'] is None:
+            raise Exception('You must provide the status')
+        else:
+            subscope_update_status(subscope, data['status'])
+            data = {}
+            data['message'] = 'ok'
+            return make_ok_response(data)
     except Exception as e:
         data = {}
         data['error'] = e

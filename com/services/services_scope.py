@@ -22,9 +22,9 @@ def register_scope(name, description, activation_date, closing_date, resource, w
                         binary_content=base64.b64decode(resource['binary_content']),
                         content_type=resource['content_type'])
         logo.save()
-        scope.logo = logo   
+        scope.logo = logo
         scope.save()
-        
+
     return scope.id
 
 '''
@@ -44,7 +44,7 @@ def register_subscope(name, description, activation_date, closing_date, resource
                             content_type=resource['content_type'])
         logo.save()
         subscope.logo = logo
-        subscope.save()        
+        subscope.save()
     return subscope.id
 
 '''
@@ -56,6 +56,17 @@ def get_scope_by_id(id_scope):
     scope = Scope.objects.get(id = ObjectId(id_scope))
     return scope
 
+
+'''
+@summary: Get a scope object by id
+@param id_scope:
+@return: Object Scope
+'''
+def get_subscope_by_id(id_subscope):
+    subscope = SubScope.objects.get(id=ObjectId(id_subscope))
+    return subscope
+
+
 '''
 @summary: Get scopes objects
 @param page_number:
@@ -63,11 +74,11 @@ def get_scope_by_id(id_scope):
 @return: result
 '''
 def get_scopes(name_filter, status,page_number = 1, page_size = 3):
-    result = {}        
-    paginate_result = Pagination(Scope.objects(_cls='Scope',name__icontains=name_filter,status=status).order_by('-creation_date'),int(page_number),int(page_size))    
+    result = {}
+    paginate_result = Pagination(Scope.objects(_cls='Scope',name__icontains=name_filter,status=status).order_by('-creation_date'),int(page_number),int(page_size))
     result['page_number'] = page_number
     result['page_size'] = page_size
-    result['total_pages'] =  paginate_result.pages 
+    result['total_pages'] =  paginate_result.pages
     result['total_elements'] = paginate_result.total
     result['content'] = paginate_result.items
     result['number_elements'] = len(paginate_result.items)
@@ -81,11 +92,11 @@ def get_scopes(name_filter, status,page_number = 1, page_size = 3):
 @return: sub_scopes: Objects (Sub_Scope)
 '''
 def get_sub_scopes_by_scope(scope,name_filter,status, page_number = 1, page_size = 3):
-    result = {}        
-    paginate_result = Pagination(SubScope.objects(parent = scope,name__icontains=name_filter,status=status),int(page_number),int(page_size))    
+    result = {}
+    paginate_result = Pagination(SubScope.objects(parent = scope,name__icontains=name_filter,status=status),int(page_number),int(page_size))
     result['page_number'] = page_number
     result['page_size'] = page_size
-    result['total_pages'] =  paginate_result.pages 
+    result['total_pages'] =  paginate_result.pages
     result['total_elements'] = paginate_result.total
     result['content'] = paginate_result.items
     result['number_elements'] = len(paginate_result.items)
@@ -105,7 +116,7 @@ def remove_subscope_by_id(id_subscope):
         return True
     except Exception as e:
         return e
-    
+
 '''
 @summary: Method that remove a scope
 @param id_scope:
@@ -121,7 +132,7 @@ def remove_scope_by_id(id_scope):
         return True
     except Exception as e:
         return e
-    
+
 '''
 @summary: Method that update a scope
 @param with_resource: Bool true or false
@@ -142,12 +153,12 @@ def update_scope(scope, name, description, activation_date, closing_date, resour
                             binary_content=base64.b64decode(resource['binary_content']),
                             content_type=resource['content_type'])
             logo.save()
-            scope.logo = logo   
+            scope.logo = logo
             scope.save()
         return True
     except Exception as e:
         return e
-    
+
 '''
 @summary: Method that update a scope
 @param with_resource: Bool true or false
@@ -168,7 +179,7 @@ def update_subscope(subscope, scope, name, description, activation_date, closing
                             binary_content=base64.b64decode(resource['binary_content']),
                             content_type=resource['content_type'])
             logo.save()
-            subscope.logo = logo   
+            subscope.logo = logo
             subscope.save()
         return True
     except Exception as e:
@@ -179,8 +190,20 @@ def update_subscope(subscope, scope, name, description, activation_date, closing
 @param scope: object
 @return: True or Exception
 @status:
-'''  
+'''
 def scope_update_status(scope,status):
     scope.status = status
     scope.save()
+    return True
+
+
+'''
+@summary: Method that update status of a scope
+@param scope: object
+@return: True or Exception
+@status:
+'''
+def subscope_update_status(subscope, status):
+    subscope.status = status
+    subscope.save()
     return True

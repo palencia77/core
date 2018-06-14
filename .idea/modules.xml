@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../social-backend/.idea/social-backend.iml" filepath="$PROJECT_DIR$/../social-backend/.idea/social-backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/social-core.iml" filepath="$PROJECT_DIR$/.idea/social-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../vivo-criollo/.idea/socialnetwork.iml" filepath="$PROJECT_DIR$/../vivo-criollo/.idea/socialnetwork.iml" />
     </modules>
   </component>
 </project>

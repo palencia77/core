@@ -12,16 +12,18 @@ import simplejson
 import requests
 
 #Test configuration------------------------------------------------------------ 
-global_login = 'j.palencia@domain.com' #Required
-global_password = '19104894' #Required
-global_id_scope = "53ee63cdad0e7c3371f60354"
-global_subscope_name = 'Atencion Especializada'
+global_login = "admin" #Required
+global_password = "19104894" #Required
+global_app = "BACKEND"
+global_id_scope = "5b145cde6b57d7000bde5497"
+global_subscope_name = "Test1 Subscope"
 #------------------------------------------------------------------------------ 
 
 #We get a new access token
 data = {}
 data['login'] = global_login
 data['password'] = global_password
+data['app'] = global_app
 
 result = requests.post("http://localhost:5000/user/validate", data=json.dumps(data))
 validate_result = result.json()

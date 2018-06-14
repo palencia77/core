@@ -13,16 +13,16 @@ import requests
 from com.tools.objects_status import *
 
 #Test configuration------------------------------------------------------------ 
-global_login = 'Francelys' #Required
-global_password = '12345' #Required
-global_id_scope = "53ee62faad0e7c3371f6034e" #Required
+global_login = 'admin' #Required
+global_password = '19104894' #Required
+global_id_scope = '5b145cde6b57d7000bde5497' #Required
 #------------------------------------------------------------------------------ 
 
 #We get a new access token
 data = {}
 data['login'] = global_login
 data['password'] = global_password
-data['app'] = "Backend"
+data['app'] = 'BACKEND'
 
 result = requests.post("http://localhost:5000/user/validate", data=json.dumps(data))
 validate_result = result.json()

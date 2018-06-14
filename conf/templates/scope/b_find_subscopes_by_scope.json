@@ -13,7 +13,7 @@
 					"activation_date" : "{{subscope.activation_date}}",
 					"closing_date" : "{{subscope.closing_date}}",
 					"status" :  "{{subscope.status}}",
-					"parent": "{{subscope.parent}}",
+					"parent": "{{subscope.parent}}" {% if subscope.logo != None %},
 					"logo" : {
 									"id_logo" : "{{subscope.logo.id_logo}}",
 									"name" : {{subscope.logo.name|tojson}},
@@ -21,6 +21,7 @@
 									"binary_content" : "{{subscope.logo.binary_content}}",
 									"content_type" : "{{subscope.logo.content_type}}"
 								}
+					{% endif %}
 				}{% if loop.last == False %},{% endif %}
 	  			{% endfor %}]
 }
