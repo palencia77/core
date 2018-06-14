@@ -320,7 +320,7 @@ def restful_subscope_update():
         if data['id_subscope'] is None:
             raise Exception('You must provide the id of the scope which you want to update')
         #Scope to be updated:
-        subscope = get_scope_by_id(data['id_subscope'])
+        subscope = get_subscope_by_id(data['id_subscope'])
         #General data validation
         if data['name'] is not None and data['description'] is not None and data['id_scope'] is not None:
             scope = get_scope_by_id(data['id_scope'])
